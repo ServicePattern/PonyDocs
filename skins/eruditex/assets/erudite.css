@@ -1,0 +1,670 @@
+/* Layout */
+#top-wrap h1,
+div#firstHeading,
+#tagline,
+#nav,
+#footer-wrap-inner,
+.message {
+	max-width: 80em;
+	margin-left: 20px;
+}
+
+
+#main {
+	max-width: 80em;
+	background: white;
+	border-style: solid;
+	border-right-color: #aaa;
+	border-bottom-color: #aaa;
+	border-top-color: #ddd;
+	border-left-color: #ddd;
+	border-width: thin;
+	margin: 0 1em 1em 1em;
+}
+
+/* Add borders so the sides line up with #main */
+#nav {
+	border-left-style: solid;
+	border-right-style: solid;
+	border-color: #333;
+	border-color: rgba(50, 50, 50, 0.7);
+	border-width: thin;
+}
+
+/* Typography base */
+@font-face {
+	font-family: 'Linux Libertine';
+	src: url('fonts/LinLibertine_R_subset.woff');
+}
+
+@font-face {
+	font-family: 'Linux Libertine';
+	font-style: italic;
+	src: url('fonts/LinLibertine_RI_subset.woff');
+}
+
+@font-face {
+	font-family: 'Linux Libertine';
+	font-weight: bold;
+	src: url('fonts/LinLibertine_RB_subset.woff');
+}
+
+@font-face {
+	font-family: 'Linux Libertine';
+	font-style: italic;
+	font-weight: bold;
+	src: url('fonts/LinLibertine_RBI_subset.woff');
+}
+
+@font-face {
+	font-family: 'Linux Biolinum';
+	src: url('fonts/LinBiolinum_R_subset.woff');
+}
+
+body {
+	font-family: 'Linux Libertine', constantia, 'hoefler text', 'palatino linotype', serif;
+	line-height: 1.4;
+	font-size: 1.125em;
+	background: #fafafa url(images/stripes-dark.svg);
+	color: #333333;
+}
+
+/* Use sans-serif font for headings and navigation */
+h1,
+div#firstHeading,
+h2,
+h3,
+h4,
+h5,
+h6,
+#nav-meta,
+#menu,
+#bottom-wrap {
+	font-family: 'Linux Biolinum', corbel, 'gill sans', 'gill sans mt', sans-serif;
+	font-weight: normal;
+	text-rendering: optimizeLegibility;
+}
+
+/* Set attractive monospace fonts */
+pre,
+code {
+	font-family: consolas, 'deja vu sans mono', 'lucida sans typewriter', monaco, monospace;
+}
+
+/* Headings */
+h1, div#firstHeading {
+	font-size: 1.5em;
+	text-transform: uppercase;
+	margin-top: 1.3em;
+}
+
+h2 {
+	font-size: 1.25em;
+	margin-top: 1em;
+}
+
+h3 {
+	font-size: 1.2em;
+	margin-top: 1.15em;
+}
+
+h4 {
+	font-size: 1.1em;
+	margin-top: 1.3em;
+}
+
+h5 {
+	font-size: 1em;
+	margin-top: 1.5em;
+}
+
+h1 + h2,
+h1 + h3,
+h1 + h4,
+h1 + h5,
+h1 + h6,
+h2 + h3,
+h2 + h4,
+h2 + h5,
+h2 + h6,
+h3 + h4,
+h3 + h5,
+h3 + h6,
+h4 + h5,
+h4 + h5,
+h5 + h6 {
+	margin-top: 0;
+}
+
+td > h1:first-child,
+td > h2:first-child,
+td > h3:first-child,
+td > h4:first-child,
+td > h5:first-child,
+td > h6:first-child {
+	margin-top: 0;
+}
+
+/* Header */
+#top-wrap {
+	background: transparent;
+	margin-bottom: 2em;
+}
+
+#top-wrap h1, div#firstHeading  {
+	text-decoration: none;
+	font-size: 2.25em;
+	line-height: 1;
+	margin-top: 1.25em;
+}
+
+#tagline {
+	font-size: 0.875em;
+}
+
+/* Menu */
+#menubutton {
+	display: none;
+}
+
+#menu {
+	margin: 1em 0 -0.625em;
+	overflow: hidden;
+	padding: 0.5em 2em 0.5em 3.75em;
+	background: #333333;
+	background: rgba(50, 50, 50, 0.7);
+}
+
+#menu a {
+	text-transform: uppercase;
+	color: #ffffff;
+}
+
+#menu a:hover,
+#menu a:focus {
+	text-decoration: underline;
+}
+
+#menu li {
+	display: block;
+	float: left;
+	margin: 0em 0.6em 0em 0em;
+	padding-right: 0.6em;
+	border-right: thin solid #666666;
+}
+
+#menu li:last-child {
+	border-right: none;
+}
+
+/* Footer */
+#bottom-wrap {
+	background: #333333;
+	clear: both;
+	color: #ffffff;
+	padding: 1.5em 0 2.5em;
+}
+
+.footer {
+	float: left;
+	width: 25%;
+	margin-left: 5%;
+}
+
+.footer li {
+	list-style: none;
+	margin: 0em;
+}
+
+.footer ul {
+	margin: 0em;
+}
+
+.footer .widget li {
+	font-size: 0.875em;
+}
+
+.footer .widget p {
+	font-size: 0.75em;
+}
+
+.footer h3 {
+	border-bottom: thin solid #666666;
+	margin-bottom: 0.2em;
+	font-size: 1.25em;
+	text-transform: uppercase;
+}
+
+.footer a,
+.footer a:visited,
+.footer a.new {
+	color: #ffffff;
+	border-bottom: thin solid #999999;
+}
+
+.footer a:hover,
+.footer a:focus,
+.footer a.new:hover,
+.footer a.new:focus {
+	border-color: #cccccc;
+}
+
+.footer li > a,
+.footer li > a:visited,
+.footer li > a.new {
+	border-color: #444444;
+}
+
+/* Footer to content (for FooterLinks) */
+#footer {
+	display: block;
+	clear: both;
+	text-align: right;
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
+	font-size: 0.75em;
+}
+
+#footer p {
+	margin-bottom: 0em;
+}
+
+#footer li {
+	list-style-position: inside;
+}
+
+/* Content */
+#bodyContent,
+.message *,
+#footer {
+	padding-left: 3.75em;
+	padding-right: 3.75em;
+}
+
+#bodyContent {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+hr {
+	/* This hack ensures fallback to .png if .svg isn't supported
+	 * (see http://css-tricks.com/svg-fallbacks/ ) */
+	background-image: url(images/hr.png);
+	background-image: url(images/hr.svg), none;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 80% 10%;
+	height: 1.25em;
+	display: block;
+	border: none;
+}
+
+#bodyContent > h1 {
+	color: #555555;
+	margin: 0 0 0.5em;
+}
+
+p,
+dt,
+dd,
+blockquote,
+center {
+	margin-bottom: 0.75em;
+}
+
+li {
+	margin-bottom: 0.375em;
+	margin-top: 0.375em;
+}
+
+table {
+	margin: 1em 0;
+}
+
+td,
+th {
+	padding: 0.125em 0.5em;
+	text-align: left;
+}
+
+pre {
+	font-size: 0.875em;
+}
+
+legend {
+	font-size: 0.875em;
+	text-align: center;
+}
+
+blockquote {
+	padding-left: 3em;
+}
+
+.center {
+	width: 100%;
+	text-align: center;
+}
+
+.center * {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Links */
+a {
+	color: #0000bb;
+	text-decoration: none;
+	border-bottom: thin solid #aaaaaa;
+}
+
+a:hover,
+a:focus {
+	border-color: #555555;
+}
+
+a:visited {
+	color: #330077;
+}
+
+a.new {
+	color: #cc0000;
+}
+
+/* Links that are obvious from their design surroundings */
+#catlinks a,
+#footer a,
+a#menubutton,
+#menu a,
+#top-wrap h1 a,
+div#firstHeading a,
+.gallery a,
+.thumbinner > a {
+	border-bottom: none;
+}
+
+div#firstHeading a {color: black;}
+
+/* Meta (edit links etc.) */
+#nav-meta {
+	float: right;
+	margin: 1.5em 3.75em 0 1em;
+	padding-left: 1em;
+	border-left: thin solid #aaaaaa;
+}
+
+#nav-meta span {
+	display: block;
+	font-size: 0.75em;
+	font-style: italic;
+	padding: 0.4em 0;
+}
+
+#nav-meta .meta-sep {
+	display: none;
+}
+
+.printfooter {
+	display: none;
+}
+
+span.editsection {
+	font-size: 0.75em;
+}
+
+.toc tbody,
+#toc tbody {
+	border: thin solid #aaa;
+}
+
+.toc li,
+#toc li {
+	list-style: none;
+}
+
+.toc #toctitle,
+#toc #toctitle {
+	text-align: center;
+}
+
+.toc h2,
+#toc h2 {
+	margin-top: 0em;
+	display: inline;
+}
+
+.toc td,
+#toc td {
+	padding: 0.25em 1em;
+}
+
+.subtitle {
+	margin-bottom: 1em;
+	font-size: 0.875em;
+	font-style: italic;
+}
+
+/* References */
+.reference {
+	font-size: 0.875em;
+}
+
+sup.reference:target,
+ol.references > li:target {
+	background-color: #ddeeff;
+}
+
+/* Images */
+img {
+	padding: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+a.image img {
+	padding: 0;
+	margin:0;
+	border: none;
+	vertical-align: middle;
+}
+
+div.floatright,
+table.floatright {
+	clear: right;
+	float: right;
+	margin: 0 0 0.5em 0.5em;
+	border: 0;
+}
+
+div.floatright p {
+	font-style: italic;
+}
+
+div.floatleft,
+table.floatleft {
+	float: left;
+	clear: left;
+	margin: 0 0.5em 0.5em 0;
+	border: 0;
+}
+
+div.floatleft p {
+	font-style: italic;
+}
+
+div.thumb {
+	margin-bottom: 0.5em;
+	width: auto;
+}
+
+div.thumbinner {
+	border: thin solid #cccccc;
+	padding: 0.2em;
+	background-color: #f9f9f9;
+	font-size: 0.875em;
+	text-align: center;
+	overflow: hidden;
+}
+
+img.thumbimage {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.thumbcaption {
+	border: none;
+	text-align: left;
+	padding: 0.2em;
+}
+
+div.magnify {
+	float: right;
+}
+
+div.magnify a,
+div.magnify img {
+	display: block;
+	border: none;
+}
+
+div.tright {
+	clear: right;
+	float: right;
+	margin-left: 1em;
+}
+
+div.tleft {
+	float: left;
+	clear: left;
+	margin-right: 1em;
+}
+
+img.thumbborder {
+	border: thin solid #aaaaaa;
+}
+
+.hiddenStructure {
+	display: none;
+}
+
+table.gallery {
+	background-color: #fafafa;
+}
+
+table.gallery td {
+	background-color: #fafafa;
+	border: thin solid #fafafa;
+}
+
+table.mw-specialpages-table {
+	margin-top: 0;
+}
+
+/* Category and Special Page lists */
+#mw-pages ul,
+#mw-subcategories ul,
+table.mw-specialpages-table tbody tr td ul {
+	font-size: 0.875em;
+}
+
+/* Category Links */
+#catlinks {
+	clear: both;
+	background: #666666;
+	height: 100%;
+	overflow: hidden;
+	/* Hide the colon after "Category" */
+	color: #666666;
+}
+
+#catlinks a {
+	color: #ffffff;
+	padding: 0 1em;
+	height: 100%;
+	font-size: 0.75em;
+	display: inline;
+}
+
+.catlinks li:first-child {
+	border-left: thin solid #aaaaaa;
+}
+
+.catlinks li {
+	margin: 0em 0.25em;
+}
+
+/* Messages */
+.message {
+	color: #ffffff;
+	background-color: #666666;
+	padding: 0.75em 0 0.25em;
+	border-left-style: solid;
+	border-right-style: solid;
+	border-color: #666666;
+	border-width: thin;
+}
+
+.message * {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.message a:link,
+.message a:visited {
+	color: #dfdfdf;
+}
+
+#mw-js-message {
+	display: none;
+}
+
+.mw-search-formheader div.search-types ul li {
+	float: left;
+	margin-left: 2em;
+}
+
+div.searchresult {
+	margin-top: 1em;
+}
+
+.redirectText {
+	font-size: 0.875em;
+}
+
+.mw-jump {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	z-index: 1;
+	color: #ffffff;
+	font-size: 0.75em;
+}
+
+.mw-jump a {
+	color: #ffffff;
+}
+
+img#logo {
+	display: block;
+	margin: 2em auto 0em;
+}
+
+/* Ensure edit form doesn't clear the right floated meta
+ * (.action-edit is selected so that preview content is cleared) */
+body.action-edit #editform,
+body.action-edit #toolbar,
+body.action-edit #wpTextbox1 {
+	clear: none;
+}
+
+div.productVersion {display:inline;}
+div.product {display:inline;}
+div.productManual {display: inline;}
+#p-documentation.portlet {margin: 0 0 1em 1em;}
+#documentationBody.pBody {display:inline;}
+#bodyContent #toc {display:none;}
+#toc {position: absolute; width: 20%; background: transparent; margin-right:2.5%; height:100%; overflow: auto;}
+#content {position: absolute; left: 20%; height: 100%; width: 80%; overflow: auto;}
+#toc img {margin:1em;padding: 0;}
+#toc a:first-child {border: none;}
+#tocpad {margin-left: 1em;}
+div#firstHeading {}

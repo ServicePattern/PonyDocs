@@ -1,0 +1,43 @@
+{
+	"name": "Eruditex",
+	"version": "1.8",
+	"author": [
+		"Nick White",
+		"Matt Wiebe",
+		"Colin Andrew Ferm"
+	],
+	"url": "https://www.mediawiki.org/wiki/Skin:Eruditex",
+	"descriptionmsg": "eruditex-desc",
+	"type": "skin",
+	"AutoloadClasses": {
+		"SkinEruditex": "Eruditex.skin.php"
+	},
+	"MessagesDirs": {
+		"Eruditex": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.eruditex": {
+			"styles": {
+				"assets/cssreset.css": {
+					"media": "screen"
+				},
+				"assets/erudite.css": {
+					"media": "screen"
+				},
+				"assets/print.css": {
+					"media": "print"
+				}
+			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "eruditex"
+	},
+	"ValidSkinNames": {
+		"eruditex": "Eruditex"
+	},
+	"manifest_version": 1
+}

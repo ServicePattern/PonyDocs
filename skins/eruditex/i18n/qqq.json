@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nick White",
+			"Robby"
+		]
+	},
+	"skinname-erudite": "Skin name",
+	"erudite-desc": "{{desc|name=Erudite|url=http://www.mediawiki.org/wiki/Skin:Erudite}}",
+	"erudite-skiptocontent": "Link to skip directly to the content on the page",
+	"erudite-skiptosearch": "Link to skip directly to the search box on the page",
+	"erudite-action-addsection": "Link to add a new section to talk page, overriding the default of \"+\"\n{{Identical|Add topic}}"
+}

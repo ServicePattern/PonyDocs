@@ -1,0 +1,62 @@
+#!/usr/bin/fontforge
+# This subsets a list of fonts to a set of unicode ranges
+
+/* Files to subset */
+files = [ \
+          "LinBiolinum_R.woff", \
+          "LinLibertine_RBI.woff", \
+          "LinLibertine_RB.woff", \
+          "LinLibertine_RI.woff", \
+          "LinLibertine_R.woff" \
+]
+
+/* Define code ranges */
+latin = [0x0020, 0x007F]
+latin_supplement = [0x00A0, 0x0100]
+latin_extended_a = [0x0100, 0x017F]
+latin_extended_b = [0x0180, 0x024F]
+latin_extended_c = [0x2C60, 0x2C7F]
+latin_extended_d = [0xA720, 0xA7FF]
+latin_extended_additional = [0x1E00, 0x1EFF]
+spacing_modifiers = [0x02B0, 0x02FF]
+diacritics = [0x0300, 0x036F]
+punctuation = [0x2000, 0x206A]
+greek = [0x370, 0x400]
+greek_extended = [0x1F00, 0x2000]
+
+/* Code ranges to subset */
+ranges = [ \
+           latin, \
+           latin_supplement, \
+           latin_extended_a, \
+           latin_extended_b, \
+           latin_extended_c, \
+           latin_extended_d, \
+           latin_extended_additional, \
+           spacing_modifiers, \
+           diacritics, \
+           punctuation, \
+           greek, \
+           greek_extended \
+         ]
+
+i = 0
+while(i < SizeOf(files))
+	Print("Subsetting ", files[i])
+	Open(files[i])
+
+	/* Select all glyphs in the ranges we want */
+	SelectNone()
+	a = 0
+	while(a < SizeOf(ranges))
+		SelectMore(ranges[a][0], ranges[a][1])
+		a++
+	endloop
+
+	SelectInvert()
+	DetachAndRemoveGlyphs()
+
+	name = Strsub(files[i], 0, Strrstr(files[i], "."))
+	Generate(name + "_subset" + ".woff")
+	i++
+endloop

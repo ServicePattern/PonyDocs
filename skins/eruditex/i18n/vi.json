@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"skinname-erudite": "Uyên bác",
+	"erudite-desc": "Giao diện sạch sẽ và dễ đọc.",
+	"erudite-skiptocontent": "Bước tới nội dung",
+	"erudite-skiptosearch": "Bước tới tìm kiếm",
+	"erudite-action-addsection": "Thêm chủ đề"
+}
