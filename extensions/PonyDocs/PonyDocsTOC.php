@@ -319,6 +319,7 @@ class PonyDocsTOC
 
 					$title_suffix = preg_replace( '/([^' . str_replace( ' ', '', Title::legalChars() ) . '])/', '', $baseTopic );
 					$title = PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . ":$selectedProduct:$selectedManual:$title_suffix";
+
 					$newTitle = PonyDocsTopic::GetTopicNameFromBaseAndVersion( $title, $selectedProduct );
 					/**
 					 * Hide topics which have no content (i.e. have not been created yet) from the user viewing. 
@@ -329,6 +330,8 @@ class PonyDocsTOC
 					 * 
 					 * @tbd: Fix so that the section name is hidden if no topics are visible?
 					 */
+
+					if(!$newTitle) continue;
 					$t = Title::newFromText( $newTitle );
 					if ( !$t || !$t->getArticleID() ) {
 						continue;

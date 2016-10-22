@@ -656,7 +656,7 @@ class PonyDocsExtension
 			PonyDocsProductVersion::SetSelectedVersion( $productName, $versionSelectedName );
 
 			$article = new Article( $title );
-			$article->loadContent( );
+			$article->fetchContent( );
 
 			if ( !$article->exists() ) {
 				$article = NULL;
@@ -716,8 +716,6 @@ class PonyDocsExtension
 			 * Create any topics which do not already exist in the saved TOC.
 			 */
 			$pProduct = PonyDocsProduct::GetProductByShortName( $match[1] );
-			var_dump($match);
-			var_dump($pProduct);
 			$pManual = PonyDocsProductManual::GetManualByShortName( $pProduct->getShortName(), $match[2] );
 			$pManualTopic = new PonyDocsTopic( $realArticle );
 
@@ -2089,7 +2087,7 @@ EOJS;
 	 *
 	 * NB $article is a WikiPage and not an article
 	 */
-	static public function onArticleDelete( &$article, &$user, &$user, $error ) {
+	static public function onArticleDelete( &$article, &$user, &$user2, $error ) {
 		$title = $article->getTitle();
 		$realArticle = Article::newFromWikiPage( $article, RequestContext::getMain() );
 

@@ -82,7 +82,6 @@ class EruditexTemplate extends BaseTemplate {
 		$this->skin = $this->data['skin'];
 		// TODO remove this, and replace elsewhere (template files mostly) with $this->skin
 		$skin = $this->data['skin'];
-
 		if ( $this->skin->getTitle() ) {
 			$this->data['canonicalURI'] = $this->skin->getTitle()->getFullURL();
 		}
