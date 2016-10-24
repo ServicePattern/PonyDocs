@@ -345,7 +345,7 @@ class PonyDocsProductVersion {
 			PONYDOCS_PRODUCTVERSION_SUFFIX ), 0 );
 
 		$content = $article->getContent();
-
+			
 		if ( !$content ) {
 			/**
 			 * There is no versions file found -- just return.
