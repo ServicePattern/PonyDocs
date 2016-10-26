@@ -205,7 +205,9 @@ window.onload = function() {
   $(document).on("click", "a, area", function() {
     var href = $(this).attr("href");
 	var base = window.location.pathname.substr(0,window.location.pathname.lastIndexOf("/"));
-    if (href.substr(0,href.lastIndexOf("/")) == base && !(href.lastIndexOf(":") > href.lastIndexOf("/")) ) 
+	var latest_base = base.replace(/(\/.*\/.*\/).*(\/.*)/,"$1latest$2");
+	var link_base = href.substr(0,href.lastIndexOf("/"));
+    if ( (link_base == base || link_base == latest_base)  && !(href.lastIndexOf(":") > href.lastIndexOf("/")) ) 
     {
       history.pushState({}, '', href);
       loadPage(href);
