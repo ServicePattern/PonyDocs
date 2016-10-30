@@ -723,7 +723,6 @@ class PonyDocsExtension
 			if ( !sizeof( $manVersionList ) ) {
 				return TRUE;
 			}
-
 			// Clear all TOC cache entries for each version.
 			if ( $pManual ) {
 				foreach ( $manVersionList as $version ) {
@@ -769,8 +768,9 @@ class PonyDocsExtension
 							$content .= '[[Category:V:' . $pProduct->getShortName() . ':' . $pVersion->getVersionName( ) . ']]';
 						}
 
-						$topicArticle->doEdit(
-							$content,
+						$contentObj = ContentHandler::makeContent( $content, Title::newFromText( $topicName ) ); 
+						$topicArticle->doEditContent(
+							$contentObj,
 							'Auto-creation of topic ' . $topicName . ' via TOC ' . $title->__toString( ),
 							EDIT_NEW );
 						if ( PONYDOCS_DEBUG ) {
