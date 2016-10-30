@@ -144,13 +144,14 @@ $wgRevision = '$Revision: 207 $';
 
 function efPonyDocsOnApiBeforeMain( &$main ) {
 	efPonyDocsSetup();
-	efManualParserFunction_Setup();
-	efVersionParserFunction_Setup();
-	efProductParserFunction_Setup();
-	efTopicParserFunction_Setup();
-	efManualDescriptionParserFunction_Setup();
 }
 $wgHooks['ApiBeforeMain'][] = 'efPonyDocsOnApiBeforeMain';
+
+$wgExtensionFunctions[] = 'efManualParserFunction_Setup';
+$wgExtensionFunctions[] = 'efVersionParserFunction_Setup';
+$wgExtensionFunctions[] = 'efProductParserFunction_Setup';
+$wgExtensionFunctions[] = 'efTopicParserFunction_Setup';
+$wgExtensionFunctions[] = 'efManualDescriptionParserFunction_Setup';
 
 /**
  * Our magic words for our custom parser functions.
