@@ -328,7 +328,9 @@ th {
 }
 
 pre {
-	font-size: 0.875em;
+	font-size: 0.75em;
+	background-color: #eee;
+	padding: 10px;
 }
 
 legend {
@@ -352,22 +354,22 @@ blockquote {
 
 /* Links */
 a {
-	color: #0000bb;
+	color: #A00000;
 	text-decoration: none;
-	border-bottom: thin solid #aaaaaa;
+	border-bottom: thin solid #A00000;
 }
 
 a:hover,
 a:focus {
-	border-color: #555555;
+	border-color: #F00;
 }
 
 a:visited {
-	color: #330077;
+	color: #A00000;
 }
 
 a.new {
-	color: #cc0000;
+	color: #A00000;
 }
 
 /* Links that are obvious from their design surroundings */
