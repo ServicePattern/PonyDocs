@@ -333,7 +333,10 @@ class PonyDocsTemplate extends QuickTemplate {
 											<?php
 											if ( sizeof($this->data['manualtoc'] ) ) { ?>
 												<p>
-													<a href="<?php echo str_replace( '$1', '', $wgArticlePath );?>index.php?title=<?php echo $wgTitle->__toString();?>&action=pdfbook">Pdf Version</a>
+													<a href="<?php echo str_replace( '$1', '', $wgArticlePath );?>index.php?title=<?php echo $wgTitle->__toString();?>&action=pdfbook">PDF book</a>
+												</p>
+												<p>
+													<a href="<?php echo str_replace( '$1', '', $wgArticlePath );?>index.php?title=<?php echo $wgTitle->__toString();?>&action=htmlbook">HTML book</a>
 												</p>
 												<?php
 												$inUL = FALSE;

@@ -40,7 +40,7 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 		global $wgServer, $wgArticlePath, $wgScriptPath, $wgUploadPath, $wgUploadDirectory, $wgScript, $wgStylePath;
 
 		// We don't do any processing unless it's pdfbook
-		if ($action != 'pdfbook') {
+		if ($action != 'pdfbook' && $action != 'htmlbook' ) {
 			return true;
 		}
 
@@ -112,7 +112,7 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 					. "-book.pdf";
 			// Check first to see if this PDF has already been created and is up to date.  If so, serve it to the user and stop 
 			// execution.
-			if (file_exists($pdfFileName)) {
+			if ($action == 'pdfbook' && file_exists($pdfFileName)) {
 				error_log("INFO [PonyDocsPdfBook::onUnknownAction] " . php_uname('n') . ": cache serve username=\""
 					. $wgUser->getName() . "\" product=\"" . $productName . "\" version=\"" . $versionText ."\" "
 					. " manual=\"" . $pManual->getShortName() . "\"");
@@ -123,6 +123,16 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 		} else {
 			error_log("ERROR [PonyDocsPdfBook::onUnknownAction] " . php_uname('n')
 				. ": User attempted to print a pdfbook from a non TOC page with path:" . $wgTitle->__toString());
+		}
+
+		// serve complete book as HTML
+		if($action == 'htmlbook') {
+			$cover = self::getCoverPageHTML($pProduct, $pManual, $v);
+			$text = self::getManualHTML($pProduct, $pManual, $v);
+			$cover = substr($cover, 0, strrpos($cover, "</body>"));
+			$text = substr($text, strpos($text, "<body>")+6);
+			echo $cover.$text;
+			die();
 		}
 
 		$html = self::getManualHTML($pProduct, $pManual, $v);
