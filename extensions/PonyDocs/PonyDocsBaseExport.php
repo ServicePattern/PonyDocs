@@ -18,7 +18,7 @@ abstract class PonyDocsBaseExport {
 	public function getCoverPageHTML($product, $manual, $version, $htmldoc = true)
 	{
 		global $wgServer, $wgStylePath;
-		$image_path	= $wgServer . $wgStylePath . PONYDOCS_PDF_TITLE_IMAGE_PATH;
+		$image_path	= $wgServer . PONYDOCS_PDF_TITLE_IMAGE_PATH;
 		$titleText = <<<EOT
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" charset="utf-8">
@@ -39,7 +39,7 @@ overflow-x: hidden;
 EOT;
 		if($htmldoc) {
 			$titleText  .= '<table height="100%" width="100%"><tr><td valign="top" height="50%">'
-				. '<center><img src="' . $image_path .  '" width="1024"></center>'
+				. '<center><img src="' . $image_path .  '"></center>'
 				. '<h1>' . $product->getLongName() . ' ' . $version->getVersionName() . '</h1>'
 				. '<h2>' . $manual->getLongName() . '</h2>'
 				. 'Generated: ' . date('n/d/Y g:i a', time())

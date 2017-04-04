@@ -330,7 +330,6 @@ class PonyDocsTOC
 					 * 
 					 * @tbd: Fix so that the section name is hidden if no topics are visible?
 					 */
-
 					if(!$newTitle) continue;
 					$t = Title::newFromText( $newTitle );
 					if ( !$t || !$t->getArticleID() ) {

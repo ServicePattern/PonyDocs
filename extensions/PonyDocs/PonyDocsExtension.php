@@ -141,12 +141,7 @@ $wgRevision = '$Revision: 207 $';
  * i.e. have a registerHooks method which does all of this and passes array( $this, 'methodName' ) for each
  * instead of using static methods?
  */
-
-function efPonyDocsOnApiBeforeMain( &$main ) {
-	efPonyDocsSetup();
-}
-$wgHooks['ApiBeforeMain'][] = 'efPonyDocsOnApiBeforeMain';
-
+$wgExtensionFunctions[] = 'efPonyDocsSetup';
 $wgExtensionFunctions[] = 'efManualParserFunction_Setup';
 $wgExtensionFunctions[] = 'efVersionParserFunction_Setup';
 $wgExtensionFunctions[] = 'efProductParserFunction_Setup';

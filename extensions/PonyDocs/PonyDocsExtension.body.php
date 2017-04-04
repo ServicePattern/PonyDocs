@@ -585,7 +585,7 @@ class PonyDocsExtension
 					$title = Title::newFromText( PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . ":{$row->page_title}" );
 
 					$article = new Article( $title );
-					$article->fetchContent();
+					$article->loadContent();
 
 					PonyDocsProductVersion::SetSelectedVersion( $pV->getProductName(), $pV->getVersionName() );
 
@@ -656,7 +656,7 @@ class PonyDocsExtension
 			PonyDocsProductVersion::SetSelectedVersion( $productName, $versionSelectedName );
 
 			$article = new Article( $title );
-			$article->fetchContent( );
+			$article->loadContent( );
 
 			if ( !$article->exists() ) {
 				$article = NULL;
@@ -723,6 +723,7 @@ class PonyDocsExtension
 			if ( !sizeof( $manVersionList ) ) {
 				return TRUE;
 			}
+
 			// Clear all TOC cache entries for each version.
 			if ( $pManual ) {
 				foreach ( $manVersionList as $version ) {
@@ -768,9 +769,8 @@ class PonyDocsExtension
 							$content .= '[[Category:V:' . $pProduct->getShortName() . ':' . $pVersion->getVersionName( ) . ']]';
 						}
 
-						$contentObj = ContentHandler::makeContent( $content, Title::newFromText( $topicName ) ); 
-						$topicArticle->doEditContent(
-							$contentObj,
+						$topicArticle->doEdit(
+							$content,
 							'Auto-creation of topic ' . $topicName . ' via TOC ' . $title->__toString( ),
 							EDIT_NEW );
 						if ( PONYDOCS_DEBUG ) {
@@ -2087,7 +2087,7 @@ EOJS;
 	 *
 	 * NB $article is a WikiPage and not an article
 	 */
-	static public function onArticleDelete( &$article, &$user, &$user2, $error ) {
+	static public function onArticleDelete( &$article, &$user, &$user, $error ) {
 		$title = $article->getTitle();
 		$realArticle = Article::newFromWikiPage( $article, RequestContext::getMain() );
 
