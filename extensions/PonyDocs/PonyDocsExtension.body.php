@@ -585,7 +585,7 @@ class PonyDocsExtension
 					$title = Title::newFromText( PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . ":{$row->page_title}" );
 
 					$article = new Article( $title );
-					$article->loadContent();
+					$article->fetchContent();
 
 					PonyDocsProductVersion::SetSelectedVersion( $pV->getProductName(), $pV->getVersionName() );
 
@@ -656,7 +656,7 @@ class PonyDocsExtension
 			PonyDocsProductVersion::SetSelectedVersion( $productName, $versionSelectedName );
 
 			$article = new Article( $title );
-			$article->loadContent( );
+			$article->fetchContent( );
 
 			if ( !$article->exists() ) {
 				$article = NULL;
@@ -1938,7 +1938,7 @@ EOJS;
 	 * - Redirects to the first topic in a manual if the user requested a bare manual URL
 	 * - Redirect to the landing page when there are no available versions
 	 */
-	public function onArticleFromTitleQuickLookup(&$title, &$article) {
+	public static function onArticleFromTitleQuickLookup(&$title, &$article) {
 		global $wgScriptPath;
 		if(preg_match('/&action=edit/', $_SERVER['PATH_INFO'])) {
 			// Check referrer and see if we're coming from a doc page.
@@ -2087,7 +2087,7 @@ EOJS;
 	 *
 	 * NB $article is a WikiPage and not an article
 	 */
-	static public function onArticleDelete( &$article, &$user, &$user, $error ) {
+	static public function onArticleDelete( &$article, &$user, &$user2, $error ) {
 		$title = $article->getTitle();
 		$realArticle = Article::newFromWikiPage( $article, RequestContext::getMain() );
 

@@ -171,7 +171,7 @@ class PonyDocsTopic {
 	 */
 	static public function FindH1ForTitle( $title ) {
 		$article = new Article( Title::newFromText( $title ), 0 );
-		$content = $article->loadContent();
+		$content = $article->fetchContent();
 
 		if ( !preg_match( '/^\s*=(.*)=/D', $article->getContent(), $matches ) ) {
 			return false;
