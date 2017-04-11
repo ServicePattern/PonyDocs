@@ -670,3 +670,236 @@ div.productManual {display: inline;}
 #toc a:first-child {border: none;}
 #tocpad {margin-left: 1em;}
 div#firstHeading {}
+
+
+/*menu css*/
+.header-wrapper .menu-section {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1031;
+    -webkit-transform: translateZ(0);
+	margin:0;
+	box-shadow: 0 0 5px rgba(0,0,0,.2);
+line-height: 0;
+}
+
+@media only screen and (min-width: 992px)
+.header-wrapper .site-header {
+    padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 992px)
+.header-wrapper .site-header {
+    padding-top: 10px;
+}	
+
+.header-wrapper .site-header {
+    padding-top: 10px;
+    padding-bottom: 40px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.site-header {
+    background: #ffffff;
+}
+
+@media only screen and (min-width: 992px)
+.site-header, .main-navigation a, .df-sitename {
+    color: #3f3f3f;
+}
+
+.site-header, .main-navigation a, .df-sitename {
+    color: #616161;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+.df_container-fluid.fluid-max {
+    max-width: 1170px;
+}
+
+.df_container-fluid.fluid-width {
+    width: 100%;
+}
+
+.df_container-fluid {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.col-left, .alignleft, .fl {
+    float: left;
+}
+
+.df-sitename img {
+    height: 30px;
+    width: auto;
+	padding: 0 !important;
+}
+
+img {
+    border: 0;
+}
+
+.site-misc-tools {
+	display: none;
+}
+
+.alignleft, .alignright {
+    display: inline;
+}
+
+.col-right, .alignright, .fr {
+    float: right;
+}
+
+.main-navigation, .site-misc-tools {
+    height: 30px;
+    line-height: 30px;
+}
+
+.df-navi {
+    margin: 0;
+    line-height: 1.875;
+    display: inline-block;
+}
+
+ul {
+    list-style: circle inside;
+}
+
+ol, ul {
+    padding-left: 0;
+}
+
+.main-navigation li {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.site-header .main-navigation>ul>li>a {
+    padding: 0 15px 15px;
+}
+
+.mobile-primary-navbar > li > a, .main-navigation .df-mega-menu > .sub-nav > li.has-children:not(.new-column) > a, .site-header .main-navigation a {
+    font-family: PT Sans;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media only screen and (min-width: 992px)
+.site-header, .main-navigation a, .df-sitename {
+    color: #3f3f3f;
+}
+
+.main-navigation a {
+    text-transform: uppercase;
+}
+
+.main-navigation a {
+    display: block;
+    padding: 0 15px;
+    text-decoration: none;
+}
+
+.sticky-logo {
+    display: none;
+}
+
+.main-navigation ul ul, .ui.overlay.sidebar.sidebar-off-canvas, .df_content-bg:before, .languages-list {
+    background: rgba( 255,255,255,1 );
+}
+
+.main-navigation ul ul, .languages-list {
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    margin: 0;
+    background: #fff;
+    display: none;
+    position: absolute;
+    z-index: 99999;
+    float: left;
+    left: 0;
+    line-height: 1.875;
+    text-align: left;
+    padding: 25px 15px 15px;
+    min-width: 250px;
+    margin-left: -15px;
+}
+
+.df_row-fluid {
+    width: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.sub-nav li {
+    display: block;
+}
+
+.main-navigation li {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation li:hover>ul {
+    display: block;
+}
+
+.site-header .main-navigation ul ul a, .df-social-connect a, .languages-list a {
+    font-family: "PT Sans";
+    font-size: 18px;
+    letter-spacing: 0.25px;
+    font-weight: 400;
+}
+
+.main-navigation ul ul ul {
+    top: 0;
+    left: 100%;
+    margin: -15px 0 0;
+}
+
+.menu-section a {
+    text-decoration: none;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    border: none;
+}
+
+.menu-section a:hover {
+    color: rgba(195,195,195,.8);
+}
+
+*, :before, :after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.button, .df_button_flat button, .df_button_flat input[type="submit"], .df_button_flat input[type="reset"], .df_button_flat input[type="button"] {
+    color: #ffffff !important;
+    border-color: #e38d00;
+    background: #ffa209;
+	display:none !important;
+}
+
+.main-navigation .button {
+    padding: .625em 1.125em!important;
+}
+
+.col-full:before, .col-full:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+}

@@ -20,6 +20,7 @@ class SkinEruditex extends SkinTemplate {
 		$out->addHeadItem( 'viewport',
 			'<meta name="viewport" content="width=device-width, initial-scale=1" />'
 		);
+		
 	}
 
 	/**
@@ -83,7 +84,7 @@ class EruditexTemplate extends BaseTemplate {
 		// TODO remove this, and replace elsewhere (template files mostly) with $this->skin
 		$skin = $this->data['skin'];
 		if ( $this->skin->getTitle() ) {
-			$this->data['canonicalURI'] = $this->skin->getTitle()->getFullURL();
+			$this->data['canonicalURI'] = $this->skin->getTitle()->getFullURL()+"#aaa";
 		}
 
 		$action = $wgRequest->getText( 'action' );
@@ -222,6 +223,8 @@ window.onload = function() {
 			<a href="#search"><?php $this->msg( 'erudite-skiptosearch' ) ?></a>
 		</div>
 
+<?php require_once( "menu.inc" ); ?>
+
 		<?php $toc=""; $docselector="";?>
 		<?php ob_start(); ?>
 			<div id="p-documentation" class="portlet">
@@ -342,13 +345,7 @@ window.onload = function() {
 
 
 		<div id="toc">
-			<a href="http://www.brightpattern.com" title="Bright Pattern Home Page" rel="home">
-				<img src="<?php $this->text( 'logopath' ) ?>" />
-			</a>
 			<div id="tocpad">
-				<a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" title="<?php $this->text( 'sitename' ); ?>" rel="home">
-					<p>Documentation Home</p>
-				</a>
 				<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform">
 					<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
 					<div>
@@ -365,7 +362,7 @@ window.onload = function() {
 		</div>
 
 		<div id="content">
-		<div id="top-wrap" role="banner">
+		<!-- div id="top-wrap" role="banner">
 					<?php if ( $inDocumentation && $this->data && $this->data['manualname'] ) { ?>
 						<div id="firstHeading" class="firstHeading"><?php echo $this->data['manualname']; ?></div>
 						<?php
@@ -374,7 +371,7 @@ window.onload = function() {
 					<?php 
 					} ?>
 			<div id="tagline"><?php $this->msg( 'tagline' ) ?></div>
-		</div>
+		</div -->
 
 		<?php echo $docselector; ?>
 
