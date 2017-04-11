@@ -20,6 +20,15 @@ class SkinEruditex extends SkinTemplate {
 		$out->addHeadItem( 'viewport',
 			'<meta name="viewport" content="width=device-width, initial-scale=1" />'
 		);
+		// canonical URL is the one with "latest" in it
+		$title = $this->getTitle();
+		$url = $this->getTitle()->getFullURL();
+		$url = preg_replace('/' . PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . ':([^:]+):([^:]+):([^:]+):([^:]+)$/i',
+			PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . '/$1/latest/$2/$3',
+			$url);
+		$out->addHeadItem( 'xxxx',
+			'<link rel="canonical" href="'.$url.'" />'
+		);
 		
 	}
 
