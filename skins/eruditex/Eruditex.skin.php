@@ -6,6 +6,12 @@
  * @ingroup Skins
  */
 
+function startsWith($haystack, $needle)
+{
+     $length = strlen($needle);
+     return (substr($haystack, 0, $length) === $needle);
+}
+
 class SkinEruditex extends SkinTemplate {
 
 	public $skinname = 'eruditex', $stylename = 'eruditex',
@@ -20,15 +26,29 @@ class SkinEruditex extends SkinTemplate {
 		$out->addHeadItem( 'viewport',
 			'<meta name="viewport" content="width=device-width, initial-scale=1" />'
 		);
-		// canonical URL is the one with "latest" in it
 		$title = $this->getTitle();
-		$url = $this->getTitle()->getFullURL();
+		$url = $title->getFullURL();
+		$localURL = $title->getLocalURL();
+
+		// if in doc and have topic - set page title to manual - topic
+		if(startsWith($localURL,'/' . PONYDOCS_DOCUMENTATION_NAMESPACE_NAME)){
+			$shortTopicName=$title->__toString();
+			$pcs = explode( ':', $shortTopicName);
+			if(count($pcs)>3){
+				$topicTitle=PonyDocsTopic::FindH1ForTitle($shortTopicName);
+				$manual=PonyDocsProductManual::GetCurrentManual($pcs[1],$title);
+				$out->setPageTitle($manual->getLongName()." -".$topicTitle);
+			}
+		}
+
+		// canonical URL is the one with "latest" in it
 		$url = preg_replace('/' . PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . ':([^:]+):([^:]+):([^:]+):([^:]+)$/i',
 			PONYDOCS_DOCUMENTATION_NAMESPACE_NAME . '/$1/latest/$2/$3',
 			$url);
-		$out->addHeadItem( 'xxxx',
+		$out->addHeadItem( 'canonical_uri',
 			'<link rel="canonical" href="'.$url.'" />'
 		);
+		
 		
 	}
 
@@ -90,11 +110,6 @@ class EruditexTemplate extends BaseTemplate {
 		$this->data['versionurl'] = $this->data['wgScript'] . '?title=' . $this->data['thispage'] . '&action=changeversion';
 
 		$this->skin = $this->data['skin'];
-		// TODO remove this, and replace elsewhere (template files mostly) with $this->skin
-		$skin = $this->data['skin'];
-		if ( $this->skin->getTitle() ) {
-			$this->data['canonicalURI'] = $this->skin->getTitle()->getFullURL()+"#aaa";
-		}
 
 		$action = $wgRequest->getText( 'action' );
 
