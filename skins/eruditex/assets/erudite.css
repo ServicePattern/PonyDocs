@@ -903,3 +903,10 @@ ol, ul {
     height: 0;
     overflow: hidden;
 }
+
+#manualname_body {
+	margin:0px; padding; 0px;
+    display: block;
+    font-size: 0.75em;
+}
+#bodyshim {clear: both;height: .7em; }

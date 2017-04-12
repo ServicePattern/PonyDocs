@@ -352,7 +352,7 @@ window.onload = function() {
 				}
 			} ?>
 
-
+		<div id="bodyshim"></div>
 		<div id="toc">
 			<div id="tocpad">
 				<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform">
@@ -395,7 +395,9 @@ window.onload = function() {
 				<?php if ( $this->data['subtitle'] ) { ?>
 					<div class="subtitle"><?php $this->html( 'subtitle' ) ?></div>
 				<?php } ?>
-
+				<?php if ( $inDocumentation ) { ?>
+					<div id="manualname_body"><?php echo $this->data['manualname']; ?></div>
+				<?php } ?>
 				<?php $this->html( 'bodytext' ) ?>
 				<?php $this->html( 'dataAfterContent' ); ?>
 			</div>
