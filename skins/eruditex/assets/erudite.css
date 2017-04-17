@@ -61,6 +61,14 @@ div#firstHeading,
 	src: url('fonts/LinBiolinum_R_subset.woff');
 }
 
+@font-face {
+  font-family: 'Material Design Iconic Font';
+  font-weight: normal;
+  font-style: normal;
+  src: url('fonts/Material-Design-Iconic-Font.woff');
+}
+
+
 body {
 	font-family: 'Linux Libertine', constantia, 'hoefler text', 'palatino linotype', serif;
 	line-height: 1.4;
@@ -910,3 +918,47 @@ ol, ul {
     font-size: 0.75em;
 }
 #bodyshim {clear: both;height: .7em; }
+
+/*Mobile hover menu*/
+@media only screen and (max-width: 992px){
+.site-misc-tools ul .df-mobile-off-canvas {
+    display: inline-block;
+}
+.site-misc-tools {
+    display: inline-block;
+    margin: -5px 10px 0 0;
+}
+#branding {margin-left:10px;}
+
+.menu-align {display:none;}
+.main-navigation {margin-top: 10px}
+.site-misc-tools:hover + .menu-align, .menu-align:hover {display:block;width:250px;min-height:100%;position:fixed;top:0;right:0;z-index: 1111;background-color:white; overflow: auto;	box-shadow: 0 0 5px rgba(0,0,0,.2);}
+.menu-section:hover {height:100%;}
+.main-navigation li {display: block;}
+.main-navigation ul ul, .languages-list {margin-left: 0;}
+}
+
+[class^=md-], [class*=" md-"] {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Material Design Iconic Font';
+    font-size: inherit;
+    speak: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.md-menu:before {
+    content: "\f197";
+}
+
+.site-misc-tools ul li {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    padding: 0 0 0 15px;
+    -moz-transition: opacity .3s ease-in-out;
+    -webkit-transition: opacity .3s ease-in-out;
+    transition: opacity .3s ease-in-out;
+    font-size: 24px;
+}
