@@ -366,8 +366,7 @@ window.onload = function() {
 					}
 				}
 			} ?>
-
-		<div id="bodyshim"></div>
+		<div class="toc-button"><i class="md-toc"></i></div>
 		<div id="toc">
 			<div id="tocpad">
 				<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform">
