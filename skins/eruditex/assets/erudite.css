@@ -694,6 +694,7 @@ div#firstHeading {}
 line-height: 0;
 }
 
+.sub-nav .menu-item {width:100%;} 
 
 .header-wrapper {
     margin-bottom: 1em;

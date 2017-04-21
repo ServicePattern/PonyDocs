@@ -402,15 +402,19 @@ window.onload = function() {
 
 
 			<div id="bodyContent">
+				<?php if ( $inDocumentation ) { ?>
+					<div id="manualname_body"><?php echo $this->data['manualname']; ?></div>
+				<?php }else{ ?>
+					<div id="manualname_body"><?php $this->text( 'sitename' ); ?></div>
+
+				<?php }?>
+
 					<?php if ( !$inDocumentation ) { ?>
 						<h1 id="firstHeading" class="firstHeading"><?php $this->html( 'title' ); ?></h1>
 						<?php
 					} ?>
 				<?php if ( $this->data['subtitle'] ) { ?>
 					<div class="subtitle"><?php $this->html( 'subtitle' ) ?></div>
-				<?php } ?>
-				<?php if ( $inDocumentation ) { ?>
-					<div id="manualname_body"><?php echo $this->data['manualname']; ?></div>
 				<?php } ?>
 				<?php $this->html( 'bodytext' ) ?>
 				<?php $this->html( 'dataAfterContent' ); ?>
