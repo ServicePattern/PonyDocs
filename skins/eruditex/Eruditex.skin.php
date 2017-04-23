@@ -239,6 +239,16 @@ window.onload = function() {
       return false;
     }
   });
+<?php if ( $inDocumentation ) { //add doc version to all searches ?>
+  $( "#searchform" ).submit(function( event ) {
+	var search_string=$("#s").val();
+	if(search_string.indexOf('incategory:V:')==-1){
+		$("#s").val(search_string+" incategory:V:"+$('#docsProductSelect').val()+":"+$('#docsVersionSelect').val());
+		console.log($('#s'));
+	}
+	return true;
+  });
+<?php } ?>
 }//);
 		</script>
 
@@ -370,7 +380,7 @@ window.onload = function() {
 		<div id="toc">
 			<div id="tocpad">
 				<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform">
-					<input type='hidden' name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
+					<input type="hidden" name="title" value="<?php $this->text( 'searchtitle' ) ?>" />
 					<div>
 						<?php echo $this->makeSearchInput( array( 'type' => 'text', 'id' => 's' ) ); ?>
 						<?php echo $this->makeSearchButton( 'go', array(
@@ -378,6 +388,7 @@ window.onload = function() {
 							'class' => "searchButton",
 							'id'    => "searchsubmit",
 						) ); ?>
+						<br/><label><input type="checkbox" id="search-this-version" checked="true"/> in selected version only</label>
 					</div>
 				</form>
 				<?php echo $toc; ?>
@@ -385,16 +396,6 @@ window.onload = function() {
 		</div>
 
 		<div id="content">
-		<!-- div id="top-wrap" role="banner">
-					<?php if ( $inDocumentation && $this->data && $this->data['manualname'] ) { ?>
-						<div id="firstHeading" class="firstHeading"><?php echo $this->data['manualname']; ?></div>
-						<?php
-					} else { ?>
-						<div  id="firstHeading" class="firstHeading"><a href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" title="<?php $this->text( 'sitename' ); ?>" rel="home"><?php $this->text( 'sitename' ); ?></a></div>
-					<?php 
-					} ?>
-			<div id="tagline"><?php $this->msg( 'tagline' ) ?></div>
-		</div -->
 
 		<?php echo $docselector; ?>
 
