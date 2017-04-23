@@ -943,6 +943,9 @@ h1 {margin-top:0.5em;}
 #p-documentation.portlet {margin: 0.5em;}
 .header-wrapper { margin-bottom: 0.5em; }
 .toc-button:hover + #toc, .toc-button:focus + #toc, #toc:hover, #toc:focus {display: block;background-color:white;overflow: auto; width: 100%; z-index:1112;}
+.mw-ui-input-inline {max-width:100%;}
+.thumbinner, .thumbinner img {max-width:100%;height:auto;}
+
 }
 
 [class^=md-], [class*=" md-"] {
