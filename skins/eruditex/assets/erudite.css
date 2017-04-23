@@ -679,6 +679,7 @@ div.productManual {display: inline;}
 #tocpad {margin-left: 1em;}
 div#firstHeading {}
 label {font-family: Arial, Helvetica, sans-serif; font-size: 0.75em;}
+#comments {margin: 1em;}
 
 /*menu css*/
 .df-ajax-search, .toc-button {display:none;}
@@ -945,7 +946,7 @@ h1 {margin-top:0.5em;}
 .toc-button:hover + #toc, .toc-button:focus + #toc, #toc:hover, #toc:focus {display: block;background-color:white;overflow: auto; width: 100%; z-index:1112;}
 .mw-ui-input-inline {max-width:100%;}
 .thumbinner, .thumbinner img {max-width:100%;height:auto;}
-
+.comments {margin: 0.5em;}
 }
 
 [class^=md-], [class*=" md-"] {
