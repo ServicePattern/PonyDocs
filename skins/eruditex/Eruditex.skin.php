@@ -239,16 +239,24 @@ window.onload = function() {
       return false;
     }
   });
-<?php if ( $inDocumentation ) { //add doc version to all searches ?>
+
   $( "#searchform" ).submit(function( event ) {
 	var search_string=$("#s").val();
-	if(search_string.indexOf('incategory:V:')==-1){
+	if(search_string.indexOf('incategory:V:')==-1 && $('#search-this-version')[0].checked){
 		$("#s").val(search_string+" incategory:V:"+$('#docsProductSelect').val()+":"+$('#docsVersionSelect').val());
 		console.log($('#s'));
 	}
 	return true;
   });
-<?php } ?>
+
+  $( "form[name=searchbox]" ).submit(function ( event ) {
+	var search_string=$("input.mw-inputbox-input").val();
+	if(search_string.indexOf('incategory:V:')==-1 && $('#search-this-version')[0].checked){
+		$("input.mw-inputbox-input").val(search_string+" incategory:V:"+$('#docsProductSelect').val()+":"+$('#docsVersionSelect').val());
+	}
+	return true;
+  });
+
 }//);
 		</script>
 
