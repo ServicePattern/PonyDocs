@@ -59,7 +59,7 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 			if(!is_array($this->articles[strtoupper($textForm[0])])) {
 				$this->articles[strtoupper($textForm[0])] = array();
 			}
-			$this->articles[strtoupper($textForm[0])] = '<span class="redirect-in-category">' . $this->getSkin()->makeKnownLinkObj( $title ) . '</span>';
+			$this->articles[strtoupper($textForm[0])] = '<span class="redirect-in-category">' . Linker::linkKnown( $title ) . '</span>';
 		}
 		else {
 			// Not a redirect, a regular article.  Let's grab the h1, if 
@@ -70,7 +70,7 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 			if(!$article) {
 				$article = new Article($title);
 			}
-			$article->LoadContent();
+			$article->getContent();
 			preg_match('/^\s*=(.*)=.*\n?/', $article->getContent(), $matches);
 			if(isset($matches[1])) {
 				// We found a header in the content, use that as our h1
@@ -89,13 +89,8 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 				// Not in default namespace, add in parenthesis.
 				$h1 .= " ($nsText)";
 			}
-
-			// In rare chances where the title will conflict with another, make 
-			// all article elements sub-arrays
-			if(!(isset($this->articles[strtoupper($h1[0])]) && is_array($this->articles[strtoupper($h1[0])]))) {
-				$this->articles[strtoupper($h1[0])] = array();
-			}
-			$this->articles[strtoupper($h1[0])][] = $this->getSkin()->makeKnownLinkObj($title, htmlentities($h1));
+			$this->articles[] = Linker::linkKnown($title, htmlentities($h1));
+			$this->articles_start_char[] = $wgContLang->convert($this->collation->getFirstLetter( $h1 ) );
 		}
 	}
 
@@ -172,8 +167,8 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 		$c = $this->articleCount;
 		if( $c > 0 ) {
 			$r = "<div id=\"mw-pages\">\n";
-			$r .= '<h2>' . wfMsg( 'category_header', $ti ) . "</h2>\n";
-			$r .= wfMsgExt( 'Category-article-count', array( 'parse' ), $c, '{{NUMBEROFARTICLES}}' );
+			$r .= '<h2>' . $this->msg( 'category_header', $ti )->parse() . "</h2>\n";
+			$r .= wfMessage( "category-article-count-limited" )->numParams( $c )->parseAsBlock();
 			$r .= $this->formatList( $this->articles, $this->articles_start_char );
 			$r .= "\n</div>";
 		}
@@ -191,8 +186,8 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 		if( $c > 0 ) {
 			# Showing subcategories
 			$r .= "<div id=\"mw-subcategories\">\n";
-			$r .= '<h2>' . wfMsg( 'subcategories' ) . "</h2>\n";
-			$r .= wfMsgExt( 'subcategorycount', array( 'parse' ), $c );
+			$r .= '<h2>' . wfMessage( 'subcategories' )->text() . "</h2>\n";
+			$r .= wfMessage( 'subcategorycount', $c )->parseAsBlock();;
 			$r .= $this->categoryList( $this->children, $this->children_start_char );
 			$r .= "\n</div>";
 		}
