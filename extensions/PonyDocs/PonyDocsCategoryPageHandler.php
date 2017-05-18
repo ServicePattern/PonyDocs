@@ -85,10 +85,12 @@ class PonyDocsCategoryPageHandler extends CategoryViewer {
 			}
 			// Let's get the namespace, if any.
 			$nsText = $title->getNsText();
+			/*
 			if($nsText) {
 				// Not in default namespace, add in parenthesis.
 				$h1 .= " ($nsText)";
 			}
+			*/
 			$this->articles[] = Linker::linkKnown($title, htmlentities($h1));
 			$this->articles_start_char[] = $wgContLang->convert($this->collation->getFirstLetter( $h1 ) );
 		}
