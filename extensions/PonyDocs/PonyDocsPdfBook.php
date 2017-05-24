@@ -59,19 +59,10 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 		$log->addEntry('book', $wgTitle, $msg);
 
 		// Initialise PDF variables
-		$layout      = '--firstpage p1';
-		$x_margin = '1.25in';
-		$y_margin = '1in';
-		$font  = 'Arial';
-		$size  = '12';
-		$linkcol = '4d9bb3';
-		$levels  = '2';
-		$exclude = array();
-		$width   = '1024';
-		$width   = "--browserwidth 1024";
+		$x_margin = PONYDOCS_PDF_XMARGIN;
+		$y_margin = PONYDOCS_PDF_YMARGIN;
 
 		// Determine articles to gather
-		$articles = array();
 		$pieces = explode(":", $wgTitle->__toString());
 
 		// Try and get rid of the TOC portion of the title
@@ -137,17 +128,14 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 
 		$html = self::getManualHTML($pProduct, $pManual, $v);
 
-		// HTMLDOC does not care for utf8. 
-		$html = utf8_decode("$html\n");
-
 		// Write the HTML to a tmp file
-		$file = "$wgUploadDirectory/".uniqid('ponydocs-pdf-book');
+		$file = "$wgUploadDirectory/".uniqid('ponydocs-pdf-book').".html";
 		$fh = fopen($file, 'w+');
 		fwrite($fh, $html);
 		fclose($fh);
 
 		// Okay, create the title page
-		$titlepagefile = "$wgUploadDirectory/" .uniqid('ponydocs-pdf-book-title');
+		$titlepagefile = "$wgUploadDirectory/" .uniqid('ponydocs-pdf-book-title').".html";
 		$fh = fopen($titlepagefile, 'w+');
 
 		$coverPageHTML = self::getCoverPageHTML($pProduct, $pManual, $v);
@@ -156,24 +144,17 @@ class PonyDocsPdfBook extends PonyDocsBaseExport {
 		fclose($fh);
 
 		$format = 'manual'; 	/* @todo Modify so single topics can be printed in pdf */
-		$footer = $format == 'single' ? '...' : '.1.';
-		$toc = $format == 'single' ? '' : " --toclevels $levels";
 
 		// Send the file to the client via htmldoc converter
 		$wgOut->disable();
-		$cmd  = " --left $x_margin --right $x_margin --top $y_margin --bottom $y_margin";
-		$cmd .= " --header ... --footer $footer --tocfooter .i. --quiet --jpeg --color";
-		$cmd .= " --bodyfont $font --fontsize $size --linkstyle plain --linkcolor $linkcol";
-		$cmd .= "$toc --format pdf14 $layout $width --titlefile $titlepagefile --size letter";
-		$cmd  = "htmldoc -t pdf --book --charset iso-8859-1 --no-numbered $cmd $file > $pdfFileName";
-
-		putenv("HTMLDOC_NOCGI=1");
+		$cmd = PONYDOCS_WKHTMLTOPDF_LOCATION." -s ".PONYDOCS_PDF_PAPERSIZE." --outline --margin-bottom $y_margin --margin-top $y_margin --margin-left $x_margin --margin-right $x_margin "
+			." cover $titlepagefile toc $file $pdfFileName";
 
 		$output = array();
 		$returnVar = 1;
 		exec($cmd, $output, $returnVar);
 		if($returnVar != 0) { // 0 is success
-			error_log("INFO [PonyDocsPdfBook::onUnknownAction] " . php_uname('n') . ": Failed to run htmldoc (" . $returnVar . ") Output is as follows: " . implode("-", $output));
+			error_log("INFO [PonyDocsPdfBook::onUnknownAction] " . php_uname('n') . ": Failed to run wkhtmltopdf (" . $returnVar . ") Output is as follows: " . implode("-", $output));
 			print("Failed to create PDF.  Our team is looking into it.");
 		}
 

@@ -23,16 +23,13 @@ abstract class PonyDocsBaseExport {
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" charset="utf-8">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style>
-html,body {
-margin: 0px;
-padding: 0px;
-width: 210mm;
-max-width: 210mm;
-overflow-x: hidden;
-}
+html,body {font-family: Arial, Helvetica, sans-serif; font-size: 12pt;}
+img, blockquote  {page-break-inside:avoid;}
+tr {page-break-inside:avoid;}
+p {page-break-inside: avoid;}
 </style>
 </head>
 <body>
@@ -96,20 +93,13 @@ EOT;
 <!doctype html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#" charset="utf-8">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title></title>
 <style>
-html,body {
-margin: 0px;
-padding: 0px;
-width: 210mm;
-max-width: 210mm;
-overflow-x: hidden;
-}
-pre {
-	width: 100%;
-	overflow-x: hidden;
-}
+html,body {font-family: Arial, Helvetica, sans-serif; font-size: 12pt;}
+img, blockquote  {page-break-inside:avoid;}
+tr {page-break-inside:avoid;}
+p {page-break-inside: avoid;}
 </style>
 </head>
 
@@ -142,7 +132,7 @@ EOT;
 
 					// parse article title string and add topic name anchor tag for intramanual linking
 					$articleMeta = PonyDocsArticleFactory::getArticleMetadataFromTitle($title);
-					$text = '<a name="' . $articleMeta['topic'] . '"></a>' . $text;
+					$text = '<a name="' . $articleMeta['topic'] . '">&nbsp;</a>' . $text; // &nbsp; to make wkhtmltopdf internal linker happy 
 
 					// prepare for replacing pre tags with code tags WEB-5926 derived from
 					// http://stackoverflow.com/questions/1517102/replace-newlines-with-br-tags-but-only-inside-pre-tags
