@@ -249,10 +249,18 @@ window.onload = function() {
 	return true;
   });
 
-  $( "form[name=searchbox]" ).submit(function ( event ) {
+  $( "#search_home" ).submit(function ( event ) {
 	var search_string=$("input.mw-inputbox-input").val();
 	if(search_string.indexOf('incategory:V:')==-1 && $('#search-this-version')[0].checked){
 		$("input.mw-inputbox-input").val(search_string+" incategory:V:"+$('#docsProductSelect').val()+":"+$('#docsVersionSelect').val());
+	}
+	return true;
+  });
+
+  $( "#search_faq" ).submit(function ( event ) {
+	var search_string=$("input.mw-inputbox-input").val();
+	if(search_string.indexOf('incategory:FAQ')==-1){
+		$("input.mw-inputbox-input").val(search_string+" incategory:FAQ");
 	}
 	return true;
   });
@@ -458,7 +466,7 @@ window.onload = function() {
   ga('create', 'UA-36709501-4', 'auto');
   ga('send', 'pageview');
 </script>
-
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/2420544.js"></script>
 		</body>
 		</html>
 		<?php
